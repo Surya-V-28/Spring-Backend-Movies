@@ -37,7 +37,6 @@ public class Movie {
     private Set<String> movieCast;
 
     @Column(nullable = false)
-    @NotBlank(message = "please provide the realseyear Value")
     private Integer releaseYear;
     @Column(nullable = false)
     @NotBlank(message = "please provide the poster")

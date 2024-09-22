@@ -11,7 +11,12 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  base:
-    url: "http://localhost:8081"
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+base:
+  url: "http://localhost:8080"
+
 project:
   poster: posters/
