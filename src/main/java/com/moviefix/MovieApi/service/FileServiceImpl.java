@@ -26,7 +26,7 @@ public class FileServiceImpl  implements  FileService{
             f.mkdir();
         }
         // to copy the file form the user to our sever created paths
-        Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(file.getInputStream(), Paths.get(filePath));
         return fileName;
     }
 

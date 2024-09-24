@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moviefix.MovieApi.dto.MoviesDto;
 import com.moviefix.MovieApi.service.MovieService;
+import jakarta.persistence.Index;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,21 @@ public class MovieController {
     public ResponseEntity<List<MoviesDto>> getAllMovies(){
         return ResponseEntity.ok(movieService.getAllMovies());
     }
+    @PostMapping("/update/{movieId}")
+    public  ResponseEntity<MoviesDto> updateMovies(@PathVariable Integer movieId, @RequestPart String moviesDto, @RequestPart MultipartFile file) throws IOException {
+        if(file.isEmpty()) file =null;
+        MoviesDto dto = convertStrtoMoviesDto(moviesDto);
+        MoviesDto moviesDto1 = movieService.updateMovie(movieId,dto
+                ,file);
+        return ResponseEntity.ok(moviesDto1);
+    }
+    @PostMapping("/delete/{movieId}")
+    public  ResponseEntity<String> deleteMovie(@PathVariable  Integer movieId) throws IOException {
+        return ResponseEntity.ok(movieService.deleteMovie(movieId));
+
+    }
+
+
     private  MoviesDto convertStrtoMoviesDto(String moviestoString ) throws JsonProcessingException {
         ObjectMapper obj = new ObjectMapper();
         MoviesDto moviesDto = obj.readValue(moviestoString,MoviesDto.class);
