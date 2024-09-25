@@ -2,8 +2,10 @@ package com.moviefix.MovieApi.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.moviefix.MovieApi.dto.MoviePageResponse;
 import com.moviefix.MovieApi.dto.MoviesDto;
 import com.moviefix.MovieApi.service.MovieService;
+import com.moviefix.MovieApi.utils.AppConstants;
 import jakarta.persistence.Index;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +55,25 @@ public class MovieController {
         return ResponseEntity.ok(movieService.deleteMovie(movieId));
 
     }
+
+    @GetMapping("/getAllMoviePage")
+    public  ResponseEntity<MoviePageResponse> getAllMoviePage(
+            @RequestParam(defaultValue = AppConstants.PAGE_NUMBER, required = false) Integer pageNumber,
+            @RequestParam(defaultValue = AppConstants.PAGE_SIZE,required = false) Integer pageSize){
+        return ResponseEntity.ok(movieService.getAllMoviesWithPagination(pageNumber, pageSize));
+    }
+
+    @GetMapping("/getAllMoviePageSort")
+    public  ResponseEntity<MoviePageResponse> getAllMoviePageSort(
+            @RequestParam(defaultValue = AppConstants.PAGE_NUMBER, required = false) Integer pageNumber,
+            @RequestParam(defaultValue = AppConstants.PAGE_SIZE,required = false) Integer pageSize,
+            @RequestParam(defaultValue = AppConstants.SORT_BY,required = false) String sortby,
+            @RequestParam(defaultValue = AppConstants.SORT_DIR,required = false) String dir
+            ){
+        return ResponseEntity.ok(movieService.getAllMoviesWithPaginationAndSorting(pageNumber, pageSize,sortby,dir));
+    }
+
+
 
 
     private  MoviesDto convertStrtoMoviesDto(String moviestoString ) throws JsonProcessingException {

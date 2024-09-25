@@ -1,12 +1,18 @@
 package com.moviefix.MovieApi.service;
 
+import com.moviefix.MovieApi.dto.MoviePageResponse;
 import com.moviefix.MovieApi.dto.MoviesDto;
 import com.moviefix.MovieApi.entities.Movie;
+import com.moviefix.MovieApi.exception.FileExistsException;
+import com.moviefix.MovieApi.exception.MovieNotExistException;
 import com.moviefix.MovieApi.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,7 +40,7 @@ public class MovieServiceImpl implements  MovieService{
     public MoviesDto addMovie(MoviesDto moviesDto, MultipartFile file) throws IOException {
         // first lets upload the file so that we  able to add the paths or name of the file in the database'
 
-       if(Files.exists(Paths.get(path + File.separator + file.getOriginalFilename())))  throw new RuntimeException("please enter the new name of the file");
+       if(Files.exists(Paths.get(path + File.separator + file.getOriginalFilename())))  throw new FileExistsException("please enter the new name of the file");
         String uploadedFileName  = fileService.uploadFile(path,file);
         // 2. update the values of the field
         moviesDto.setPosterUrl(uploadedFileName);
@@ -74,7 +80,7 @@ public class MovieServiceImpl implements  MovieService{
 
     @Override
     public MoviesDto getMovie(Integer id) {
-           Movie movie = movieRepository.findById(id).orElseThrow(()-> new RuntimeException("Movies Id not found"));
+           Movie movie = movieRepository.findById(id).orElseThrow(()-> new MovieNotExistException("Movies Id not found" + id));
 
            // conversation of the movie to movieDto
         String posterUrl = baseUrl + "/file/" + movie.getPoster();
@@ -96,31 +102,14 @@ public class MovieServiceImpl implements  MovieService{
     public List<MoviesDto> getAllMovies() {
 
 
-        List<Movie> movies = movieRepository.findAll();
-        List<MoviesDto> moviesDtos = new ArrayList<>();
-        for (Movie movie : movies){
-
-            String posterUrl = baseUrl + "/file/" + movie.getPoster();
-            MoviesDto moviesDto = new MoviesDto(
-                    movie.getMovieId(),
-                    movie.getTitle(),
-                    movie.getDirector(),
-                    movie.getStudio(),
-                    movie.getMovieCast(),
-                    movie.getReleaseYear(),
-                    movie.getPoster(),
-                    posterUrl
-
-            );
-            moviesDtos.add(moviesDto);
-        }
+        List<MoviesDto> moviesDtos = getMoviesDtos(movieRepository.findAll());
         return moviesDtos;
     }
 
     @Override
     public MoviesDto updateMovie(Integer movieId, MoviesDto moviesDto, MultipartFile file) throws IOException {
         // get the current movie entity with the movieDto Updated
-        Movie currMovie = movieRepository.findById(movieId).orElseThrow(()-> new RuntimeException("Don't have the movie with id"));
+        Movie currMovie = movieRepository.findById(movieId).orElseThrow(()-> new MovieNotExistException("Don't have the movie with id" + movieId));
         // get the file name
         String fileName = currMovie.getPoster();
         if(file !=null) {
@@ -163,11 +152,50 @@ public class MovieServiceImpl implements  MovieService{
 
     @Override
     public String deleteMovie(Integer id) throws IOException {
-        Movie currMovie = movieRepository.findById(id).orElseThrow(()-> new RuntimeException("Don't have the movie with id"));
+        Movie currMovie = movieRepository.findById(id).orElseThrow(()-> new MovieNotExistException("Don't have the movie with id" + id));
         String fileName = currMovie.getPoster();
         Files.deleteIfExists(Paths.get(path + File.separator + fileName));
         movieRepository.delete(currMovie);
         return "Movie deleted with id " + id;
 
+    }
+
+    @Override
+    public MoviePageResponse getAllMoviesWithPagination(Integer pageNumber, Integer pageSize) {
+        Pageable pageable =  PageRequest.of(pageNumber,pageSize);
+          Page<Movie>  moviesPage = movieRepository.findAll(pageable);
+        List<MoviesDto> moviesDtos = getMoviesDtos(moviesPage.getContent());
+        return new MoviePageResponse(moviesDtos,pageNumber,pageSize, (int) moviesPage.getTotalElements(),moviesPage.getTotalPages(),moviesPage.isLast());
+    }
+
+    @Override
+    public MoviePageResponse getAllMoviesWithPaginationAndSorting(Integer pageNumber, Integer pageSize, String sortby, String dir) {
+        Sort sort = dir.equalsIgnoreCase("asc") ? Sort.by(sortby).ascending() : Sort.by(sortby).descending();
+        Pageable pageable =  PageRequest.of(pageNumber,pageSize,sort);
+        Page<Movie>  moviesPage = movieRepository.findAll(pageable);
+        List<MoviesDto> moviesDtos = getMoviesDtos(moviesPage.getContent());
+        return new MoviePageResponse(moviesDtos,pageNumber,pageSize, (int) moviesPage.getTotalElements(),moviesPage.getTotalPages(),moviesPage.isLast());
+    }
+
+    private List<MoviesDto> getMoviesDtos(List<Movie> moviesPage) {
+        List<Movie> movies = moviesPage;
+        List<MoviesDto> moviesDtos = new ArrayList<>();
+        for (Movie movie : movies) {
+
+            String posterUrl = baseUrl + "/file/" + movie.getPoster();
+            MoviesDto moviesDto = new MoviesDto(
+                    movie.getMovieId(),
+                    movie.getTitle(),
+                    movie.getDirector(),
+                    movie.getStudio(),
+                    movie.getMovieCast(),
+                    movie.getReleaseYear(),
+                    movie.getPoster(),
+                    posterUrl
+
+            );
+            moviesDtos.add(moviesDto);
+        }
+        return moviesDtos;
     }
 }
