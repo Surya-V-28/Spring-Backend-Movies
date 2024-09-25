@@ -60,9 +60,7 @@ public class MovieServiceImpl implements  MovieService{
 
          // before sending the data we need to generate the response
         String posterUrl = baseUrl + "/file/" + uploadedFileName;
-
         // Converstion of the Movies to MoviesDto
-
         MoviesDto moviesDto1 = new MoviesDto(
                 savedMovies.getMovieId(),
                 savedMovies.getTitle(),
@@ -73,15 +71,12 @@ public class MovieServiceImpl implements  MovieService{
                 savedMovies.getPoster(),
                 posterUrl
         );
-
-
         return moviesDto1;
     }
 
     @Override
     public MoviesDto getMovie(Integer id) {
            Movie movie = movieRepository.findById(id).orElseThrow(()-> new MovieNotExistException("Movies Id not found" + id));
-
            // conversation of the movie to movieDto
         String posterUrl = baseUrl + "/file/" + movie.getPoster();
         MoviesDto moviesDto = new MoviesDto(
@@ -100,8 +95,6 @@ public class MovieServiceImpl implements  MovieService{
 
     @Override
     public List<MoviesDto> getAllMovies() {
-
-
         List<MoviesDto> moviesDtos = getMoviesDtos(movieRepository.findAll());
         return moviesDtos;
     }
@@ -117,9 +110,8 @@ public class MovieServiceImpl implements  MovieService{
             fileName = fileService.uploadFile(path,file);
         }
         moviesDto.setPoster(fileName);
-
         Movie mv = new Movie(
-                currMovie.getMovieId(),
+                moviesDto.getMovieId(),
                 moviesDto.getTitle(),
                 moviesDto.getDirector(),
                 moviesDto.getStudio(),
