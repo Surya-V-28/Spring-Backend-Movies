@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 public class User implements UserDetails {
 
     @Id
@@ -42,10 +44,10 @@ public class User implements UserDetails {
     private RefreshToken  refreshToken;
     @Enumerated(EnumType.STRING)
     private  UserRole role;
-    private boolean isAccountNonExpired=true;
-    private boolean isAccountNonLocked =true;
-    private  boolean isCredentialsNonExpired = true;
-    private  boolean isEnabled = true;
+    private final boolean isAccountNonExpired=true;
+    private final  boolean isAccountNonLocked =true;
+    private final   boolean isCredentialsNonExpired = true;
+    private final   boolean isEnabled = true;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -65,21 +67,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }

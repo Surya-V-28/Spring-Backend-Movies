@@ -1,5 +1,6 @@
 package com.moviefix.MovieApi.auth.service;
 
+import com.moviefix.MovieApi.auth.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,10 +22,12 @@ public class AuthFilterService extends OncePerRequestFilter {
     private  final Jwtservice jwtservice;
 
     private final UserDetailsService userDetailsService;
+    private final UserRepository userRepository;
 
-    public AuthFilterService(Jwtservice jwtservice, UserDetailsService userDetailsService) {
+    public AuthFilterService(Jwtservice jwtservice, UserDetailsService userDetailsService, UserRepository userRepository) {
         this.jwtservice = jwtservice;
         this.userDetailsService = userDetailsService;
+        this.userRepository = userRepository;
     }
 
 
@@ -44,6 +47,7 @@ public class AuthFilterService extends OncePerRequestFilter {
         jwt = authHeader.substring(7);
         // Extract the username form the token
         username = jwtservice.extractUsername(jwt);
+        System.out.println("Recived the user name form the repo + " + username);
 
         if(username !=null && SecurityContextHolder.getContext().getAuthentication()==null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);

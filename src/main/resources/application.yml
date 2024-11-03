@@ -15,8 +15,20 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "startup.work.231@gmail.com"
+    password: "sbza cbcd hrxr jlfx"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 base:
-  url: "http://localhost:8080"
+  url: "http://localhost:8081"
 
 project:
   poster: posters/
