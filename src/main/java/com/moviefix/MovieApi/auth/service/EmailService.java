@@ -8,18 +8,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
-
     private  final JavaMailSender javaMailSender;
-
     public EmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
     public void sendSimpleMessage(MailBody mailBody) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(mailBody.to());
+        message.setTo(mailBody.to().trim());
         message.setSubject(mailBody.Subject());
-        message.setTo(mailBody.message());
+        message.setFrom("startup.work.231@gmail.com");
+        message.setText(mailBody.message());
         javaMailSender.send(message);
     }
 }
