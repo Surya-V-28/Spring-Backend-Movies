@@ -1,13 +1,1 @@
-{
-  "type": "service_account",
-  "project_id": "flutterui-61a48",
-  "private_key_id": "526533fc6ceae09942e8d8468aa99634c9d48afa",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCoDQM6txmFUtoE\nZBt+GvWb6Tx5Mi21DlUFDwJf78YI7F2hLtWpNJ10x4OcfEQpvDHyn3W8TO1t7QbU\nCrO6SmK3yYstkECrVtlwdMhKoFtCFpxNOEu2WBFsfzY5ErWQjH1zhDrpXk7fVSkk\nIfUUgkd4VN8mRC7gmX8upP8WL3tA9FWJqVkakABluQARJOKJHaElcmI/VJ1Yqfwc\nSmlbBGDRxTmk6AiFUWhKuAEE2b4SxjknWNtUs56Rx1LqQQkVZ/rc+rswif09jFEt\nV+rxwWyG1IH97J3pX08TlaM+f795ke7tfVUPbLjFTexBtY/WzOM60aXy8Usr+g1g\nt16DmEeBAgMBAAECggEAB72/NoYDGIKXOUzu/QdzBVNIek0A4OJz0UmGZorUGprA\nSqWumRZ70xqCdhu9lFZXbu2wacvZo1bgCdYjHreQ3fZcWV1H9FiaKDlx9UmXIJeL\n7Ez1xGTgyxieU+FYMKwfFopaoB/MdnJc5H2ltXPVpN30gFXTWrxpaNm4CDKoXObd\nTiLpPhAyzRvmRgCn2dPCrLmnP3sXKD5KUYR7NGlHTFFmLhEMALRRT4mTcVc+Gm0r\n5IQtxYfpDQo3MPfZuoUMWUzxd3FILV5ww8M7MC8owQPtr6kvNYQDVXdas6Hk3DzJ\nfUSWMpf3zVGZccyx9pXxvbwzPK2HwPTzyQtOzONekQKBgQDBHHLL0DdYq02ygRiV\nhoqG/fJFD6sGX1zNPH1Ps86VxGEDjoEfQqWPWVJ3y4hQKiLV88hwkW5SUI99mCoQ\noX4kfGBbRBKl87AxcYHMpNwkowkl0TeFRwKzeszq9hPxOMEGZab57WtDiSMFcXw9\nopYupxvhuU1W1IYwhm7dJ6pVEQKBgQDex02jStl5k8mHZIVXXLdSRUd16SEmCXRl\nn1LuBejmk7XyOF2WjkSgMDGi0ZregvKHr43T1hXydpC1YkhZRByOy0vuBI8+bg2n\n6FA15FpCeXVDKYh80nHR8C8twthxdQM86R2NWubYc3ARtr8DxhRYVVMoykMVc3dX\nEBcc77ELcQKBgQCEaUZJfB7HHMas1BoQRO1tfGkHc6PYPcE7NPPTl73aMYo3zxm4\nXpF5Bk0muRdhqFK0k3DnxsB3jqek/ZYySxlcWTAUxEtpIPu6G1NeB9ivAl9+X8OL\nDlLK0DP8E/k+mKS6By+EBYhcCYdK7zK6bGY/3POgRdfC5vyP/027NLx1kQKBgQDN\nh9Sh9VlEqEtChUPbwKdE2LPAHdA+VnSzmNUa0gr4R4iSKtx1HVZE75GrpHOcG/WD\npzxTFu1yn16MaVtUN9mdCARKWJyLPV+N7G+r+LwpHgNIblYEyubFiDEOp/emXQ0a\nsftYwWe+hGn9fbsm0SVOBZJOTKStcrTEdwzL3ntZkQKBgGO5FHseYE7A7bPVwC8V\n3ETo8oTnesSyTRXhzXK8wn66U0JeOEe9BbtetQlAhUnkwGC8FGIFaSHsR83KGGrM\njwlGSGqk2D1BgvrU6vgRvpk3bTUiD+t/lmADOeLng+hTPiFlOvgRPbHnabFv2gaJ\nV6x09YMn+QsWImNVMMLz2GfF\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-pqx97@flutterui-61a48.iam.gserviceaccount.com",
-  "client_id": "114273481370020644514",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-pqx97%40flutterui-61a48.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}
+
