@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "spring-video-8fda6",
+  "private_key_id": "f4fcb315ee7d36270c91c53b7d4e4f7e678c1460",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/ONkrED5k0D7b\nHEh79or1xWYjQoMkJKYISk5yCsmjXEtJ85+HJTnMsq7PajkgD3C3iqY4MEuXwZtr\nikGA7gjq4UIqJzlnJafRtAIr0mkZuUF2P18F3E1kMAjLkzOxgK13fVAHCUOjH4YB\neJmaeYlOIHz7PMM2Gczn/dqrKKs28vxW6Rzcnrra0WarzcZxm43P8u7g97v/uyAC\n26T7U3FzOChkREx+7qD/aaPoNZ0Gd7msAXu/WCZfy0UiQ2SL2GEXytAgzod0ylI5\nGlTPP30kqF2tMuebWGUOG9IJrZ4eGjBiFdaHefgBGmMCaGPvzjy+ZwNvv+k1CvAg\nJRioFbLZAgMBAAECggEADVv4y29Q1e+44yDBzUv0j4Y+jr+RPxJCuZO2u8prpbqn\nYDpW6T+X9GhWWf4d5r1qvp6UjW/i/sOYqrByckIPBEPVAMdpP/7Lj5UVIr/KNnEb\ndO9T9upEy4ynN1ETJzc/ceM4Fv8WHIccWwLJ2RbdGW91HoNIpcFd2qZWTidi9iLF\nlmr6G7i3Fbzf1SiLLqwCksZ+i6WrmRjB6QsK6o3dNgZKKswfwEwPKQnlSfhf4M2+\n/sc4vN6lI9kmUCR23mm3oeIyB4q0oohOquZ/uG1M1Yow2f4z5hMq5HR6T8i74qCD\ngHOevv4pqMibYgYN1UNw2KEZ3j2uWdJwsl04QuS3lQKBgQDkjSUDOt3F8UuJMcD3\ns6myifKtw3hQkvOmasUK5/CmjOx0S1T2h28Yg8+KGXnOxp3TrIajrtYgDAeQsI+n\nlvGCqURuDffH0FQn+rSct8kJTVpWZfK7KqGOx21z9fz2lbax4pbhmqDcP3/ZWqWi\nXFR4MoktpWzHbt6kbujQK8WtRQKBgQDWMAH5o4i/XCe1kA76ez/AkY7roY9vJZUt\nOC6vC/wxOvdAPen/hDn+jiJB4rtZI9r41Z80cgkAZ8/BGe/E1Bq2EQyDQPLox9yx\nU3ZenzBqtVKVAZcKKhVtxgF7AGvGVZfYJXXvOHADK/eJ8Qmg615m2zy992pYLnPC\nllKseo/WhQKBgDJ9c+XIxWGLMtK2KRkPmbeVfgUhH509OZJUF/+WybUhgMMYOUbV\nGJfj1p99jUk+23L9tCjI4QjnX2x5dOLjF6tz1WgyscB0p4LFgcz1VPY3HnPjxcHP\nYy11pRpvB1k6LcgSdJ6WWF8PsCDGQ70ghJChKWjqGKPePFU7IzeJ0/u5AoGBAI5v\nMoEOjVukLwwAltVfrM+kfISZ1ca2GXQOzoy9zaH3coEYK0ouZlqvrnxeCPSIcY/U\nj6DSzMWmQ3RIiTg9TN4SjF2kjWTbtBmARVE7T3lGx3orqoOp5MIxUL65UvJ77RRi\nJQFGaMbTMDRdRGfs3cRMuyIhLGkjyvt199iXUJv5AoGASLboHG/4BkuCIn/Ud14m\nbQEfzT+CU5v7GUnTU2JeO6FHnCm1eUkEtlO8MfN7ng9ZNRWLFGPyn2ZkQ6bpu48i\n0hw3StZ0Bx2dGjaCDA4HFd1eRrt3cuWpXCZKFmJVeG5YKe8NGaPxaI3e2EEpwMp8\nUiz56IoyGge5dkeytx78Vlo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-8n7ox@spring-video-8fda6.iam.gserviceaccount.com",
+  "client_id": "113874494715653933060",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-8n7ox%40spring-video-8fda6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

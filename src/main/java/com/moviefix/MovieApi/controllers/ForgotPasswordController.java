@@ -90,6 +90,7 @@ public class ForgotPasswordController {
 
         String encodePassword = passwordEncoder.encode(changePassword.password());
         userRepository.updatePassword(email,encodePassword);
+
         return ResponseEntity.ok("Password has been changed ");
     }
 

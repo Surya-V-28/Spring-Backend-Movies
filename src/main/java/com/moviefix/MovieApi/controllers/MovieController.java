@@ -27,7 +27,6 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @PreAuthorize("hasAuthorize('ADMIN')")
     @PostMapping("/add")
     public ResponseEntity<MoviesDto> addNewMovie(@RequestPart MultipartFile file, @RequestPart String moviestoString ) throws IOException {
         MoviesDto dto = convertStrtoMoviesDto(moviestoString);
