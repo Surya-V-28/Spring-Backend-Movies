@@ -1,5 +1,7 @@
 
 spring:
+  cache:
+    type: simple
   application:
     name: MoviesService
   datasource:
@@ -32,10 +34,10 @@ spring:
 base:
   url: "http://localhost:8081"
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:9786/eureka/
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:9786/eureka/
 
 project:
   poster: posters/

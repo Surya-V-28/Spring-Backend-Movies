@@ -2,6 +2,7 @@ package com.moviefix.MovieApi.auth.config;
 
 
 import com.moviefix.MovieApi.auth.service.AuthFilterService;
+import com.moviefix.MovieApi.filters.RateLimitingFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,8 @@ public class SecurityConfig {
 
     private final AuthenticationProvider authenticationProvider;
 
+    private final RateLimitingFilter rateLimitingFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws  Exception {
         httpSecurity
@@ -36,6 +39,7 @@ public class SecurityConfig {
                 ).sessionManagement(session->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
+                .addFilterBefore(rateLimitingFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(authFilterService, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
