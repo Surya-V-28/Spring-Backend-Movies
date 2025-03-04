@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: PaymentService
+  datasource:
+    username: root
+    password: Surya@Sql231
+    url: jdbc:mysql://localhost:3306/movies
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9786/eureka/
+
+razorpay:
+  key: //values
+  key_secret: //keys
+
+server:
+  port: 8083

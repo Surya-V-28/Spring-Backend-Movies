@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+   <select>
+       <option>Pro Plan</option>
+       <option> Ultra plan </option>
+       <option> Basic Plan</option>
+   </select>
+   <Button onclick="createOrder()"> Procced to pay </Button>
+
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+   <script>
+       async function createOrder() {
+  alert("working"); // This will trigger first before fetching data.
+  const userId = 1;  // Replace with the actual user ID
+  const url = `http://localhost:8083//payments/${userId}`;  // Use http if your backend doesn't support https locally
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();  // Convert response to JSON
+    console.log('User Payments:', data);
+      // Process the data returned
+         initiateRazorpayCheckout(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);  // Handle any errors
+  }
+}
+
+       function initiateRazorpayCheckout(paymentData) {
+  const options = {
+    key: "your_razorpay_key",  // Replace with your Razorpay API key
+    amount: paymentData.amountPaid * 100,  // Razorpay expects the amount in paise
+    currency: "INR",
+    order_id: paymentData.razorPayOrderId,  // Get the Razorpay order ID from the backend response
+    name: "Your Company Name",  // Name of your business
+    description: "Payment for subscription",  // Description of the payment
+    image: "https://your-logo-url.com/logo.png",  // Optional: Your company logo
+
+    handler: function (response) {
+      console.log("Payment successful:", response);
+      alert('Payment successful: ' + response.razorpay_payment_id);
+      // You can make an API call to update the payment status or save the payment details
+    },
+
+    prefill: {
+      name: paymentData.name,  // Prefill the name from the API response (if available)
+      email: paymentData.emailId,  // Prefill email ID from API response
+      contact: paymentData.contact,  // Optional: Prefill contact number
+    },
+
+    notes: {
+      address: "Your address",  // Optional: Add extra information (e.g., address) here
+    },
+
+    theme: {
+      color: "#F37254",  // Optional: Customize the color of the checkout modal
+    }
+  };
+
+  const rzp1 = new Razorpay(options);
+  rzp1.open();  // Open the Razorpay payment modal
+}
+   </script>
+</body>
+
+</html>

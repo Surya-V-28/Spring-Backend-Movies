@@ -1,0 +1,21 @@
+<!-- src/main/resources/templates/upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+</head>
+<body>
+<h1>Upload Video</h1>
+<form action="/video/upload" method="POST" enctype="multipart/form-data">
+    <label for="file">Choose Video File:</label>
+    <input type="file" name="file" required><br>
+    <label for="name">Video Name:</label>
+    <input type="text" name="name" required><br>
+    <label for="description">Description:</label>
+    <textarea name="description" required></textarea><br>
+    <button type="submit">Upload Video</button>
+</form>
+</body>
+</html>
